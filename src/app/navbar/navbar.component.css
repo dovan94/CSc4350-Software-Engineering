@@ -142,3 +142,7 @@ img {
     padding-left: 10px;
     display: block;
 }
+
+#login{
+  float:right;
+}
