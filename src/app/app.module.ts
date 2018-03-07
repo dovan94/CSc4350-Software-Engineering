@@ -7,6 +7,9 @@ import { ContactComponent } from './contact/contact.component';
 
 import { AppRoutingModule } from './/app-routing.module';
 import { LoginComponent } from './login/login.component';
+import { FaqComponent } from './faq/faq.component';
+import { CreateComponent } from './create/create.component';
+import { PaymentComponent } from './payment/payment.component';
 
 
 @NgModule({
@@ -14,7 +17,10 @@ import { LoginComponent } from './login/login.component';
     AppComponent,
     NavbarComponent,
     ContactComponent,
-    LoginComponent
+    LoginComponent,
+    FaqComponent,
+    CreateComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
