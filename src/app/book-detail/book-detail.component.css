@@ -1,0 +1,16 @@
+.container {
+    width: 80%;
+    margin: 8% auto;
+}
+#left {
+    width: 25%;
+    float: left;
+}
+#right {
+    margin-left: 25%;
+}
+img {
+    width: 70%;
+    margin: 0 auto;
+    display: block;
+}

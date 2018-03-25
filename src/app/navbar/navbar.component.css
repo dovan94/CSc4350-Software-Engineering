@@ -134,15 +134,6 @@ img {
     color: White;
 }
 
-#search-box {
-    float: right;
-    width: 15%;
-    height: 30px;
-    margin: auto 2%;
-    border-radius: 20px;
-    padding-left: 10px;
-    display: block;
-}
 
 #login{
   float:right;
@@ -156,7 +147,7 @@ img {
 }
 #search-box {
     float: right;
-    width: 30%;
+    width: 40%;
     height: 36px;
     margin: 14px 2%;
     border-radius: 20px;
