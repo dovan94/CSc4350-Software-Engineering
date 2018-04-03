@@ -36,7 +36,7 @@ export class BookService {
     searchEntries(searchTerm: string) {
         if (searchTerm.trim()) {
             searchTerm = searchTerm.replace(/\s+/g, '+');
-            let URL = this.GoogleBookURL + searchTerm;
+            let URL = this.GoogleBookURL + searchTerm + "&key=AIzaSyBFoKzjV2wbdpI9Vqqmoz0_ZlAua5Nm5BY";
             return this.http.get(URL);
 
         }

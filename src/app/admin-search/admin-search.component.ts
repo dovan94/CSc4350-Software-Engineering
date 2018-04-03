@@ -34,19 +34,17 @@ export class AdminSearchComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        
+
     }
 
     search(term: string) {
-        // if (term) {
-            if (term.trim().length !== 0) {
-                this.searchTerm$.next(term.trim());
-                this.bookService.search(this.searchTerm$)
-                       .subscribe((results: any) => {
-                           this.books = results.items;
-                       });
-            }
-        // }
+        if (term.trim().length !== 0) {
+            this.searchTerm$.next(term.trim());
+            this.bookService.search(this.searchTerm$)
+                   .subscribe((results: any) => {
+                       this.books = results.items;
+                   });
+        }
     }
     onfocus(){
         this.dropDown = !this.dropDown;
