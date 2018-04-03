@@ -14,6 +14,7 @@ import 'rxjs/add/operator/switchMap';
 @Injectable()
 export class BookService {
     private GoogleBookURL: string = "https://www.googleapis.com/books/v1/volumes?q=";
+    private APIKey: string = "&key=AIzaSyBFoKzjV2wbdpI9Vqqmoz0_ZlAua5Nm5BY";
 
     constructor (private http: HttpClient) { }
 
@@ -36,7 +37,7 @@ export class BookService {
     searchEntries(searchTerm: string) {
         if (searchTerm.trim()) {
             searchTerm = searchTerm.replace(/\s+/g, '+');
-            let URL = this.GoogleBookURL + searchTerm + "&key=AIzaSyBFoKzjV2wbdpI9Vqqmoz0_ZlAua5Nm5BY";
+            let URL = this.GoogleBookURL + searchTerm + this.APIKey;
             return this.http.get(URL);
 
         }
