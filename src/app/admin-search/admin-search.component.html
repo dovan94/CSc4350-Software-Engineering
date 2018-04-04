@@ -1,0 +1,26 @@
+<div>
+    <h4>Book Search</h4>
+    <input #searchBox id="search-box"
+           type="text"
+           placeholder="Search new book"
+           (keyup)="search(searchBox.value)"
+           (click)=onfocus(dropdown)
+           (blur)="onblur()"
+           [(ngModel)]="searchName"
+           />
+
+    <div *ngIf="dropDown" class="container dropdown-content" >
+           <div class="listContents" *ngFor="let book of books" style="padding: 20px;">
+                 <div >
+                   <img src="{{ book.volumeInfo.imageLinks.thumbnail }}" style="width:10%;"/>
+                   {{ book.volumeInfo.title }}
+                 </div>
+           </div>
+    </div>
+</div>
+
+
+
+<!--(keyup)="search(searchBox.value)"
+(keyup)="searchTerm$.next($event.target.value)"
+-->

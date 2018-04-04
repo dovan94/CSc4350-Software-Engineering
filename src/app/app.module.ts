@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule }   from '@angular/forms';
+
 import { BookService } from './book.service';
 
 import { AppComponent } from './app.component';
@@ -13,6 +15,8 @@ import { CreateComponent } from './create/create.component';
 import { PaymentComponent } from './payment/payment.component';
 import { BooksComponent } from './books/books.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
+import { AdminSearchComponent } from './admin-search/admin-search.component';
+import { AdminPageComponent } from './admin-page/admin-page.component';
 
 
 @NgModule({
@@ -25,11 +29,15 @@ import { BookDetailComponent } from './book-detail/book-detail.component';
     CreateComponent,
     PaymentComponent,
     BooksComponent,
-    BookDetailComponent
+    BookDetailComponent,
+    AdminSearchComponent,
+    AdminPageComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [BookService],
   bootstrap: [AppComponent]
