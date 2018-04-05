@@ -15,6 +15,7 @@ public class User {
 	private String password;
 	private String first_name;
 	private String last_name;
+<<<<<<< HEAD
 	
 	public User() {
 		user_id = null;
@@ -74,3 +75,55 @@ public class User {
 	
 	
 }
+=======
+
+	public User() {
+		this.user_id = null;
+		this.username = "";
+		this.email = "";
+		this.password = "";
+		this.first_name = "";
+		this.last_name = "";
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getFirst() {
+		return first_name;
+	}
+
+	public void setFirst(String first_name) {
+		this.first_name = first_name;
+	}
+
+	public String getLast() {
+		return last_name;
+	}
+
+	public void setLast(String last_name) {
+		this.last_name = last_name;
+	}
+}
+>>>>>>> 26e3e8f9309a708a2e0b0ea59da9d61141f79771
