@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule }   from '@angular/forms';
 
 import { BookService } from './book.service';
+import { UserService } from './user.service';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -39,7 +40,7 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [BookService],
+  providers: [BookService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

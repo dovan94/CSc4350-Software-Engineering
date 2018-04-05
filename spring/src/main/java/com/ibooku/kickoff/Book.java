@@ -12,23 +12,23 @@ public class Book {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer book_id;
 	private String title;
-  private String author;
-  private String genre1;
-  private String genre2;
-  private String isbn;
-  private int price;
-  private String description;
+  	private String author;
+  	private String genre;
+  	private String isbn;
+  	private double price;
+  	private String description;
+	private String image;
 
 
 	public Book() {
 		this.id = null;
 		this.title = "";
-    this.author = "";
-    this.genre1 = "";
-    this.genre2 = "";
-    this.isbn = "";
-    this.price = 0;
-    this.description = "";
+	    this.author = "";
+	    this.genre1 = "";
+	    this.isbn = "";
+	    this.price = 0.0;
+	    this.description = "";
+		this.image = "";
 	}
 
 	public String getTitle() {
@@ -36,26 +36,26 @@ public class Book {
 	}
 
 	public String getAuthor() {
-    return author;
-  }
+    	return author;
+  	}
 
-  public String getGenre1() {
-    return genre1;
-  }
+  	public String getGenre1() {
+    	return genre1;
+  	}
 
-  public String getGenre2() {
-    return genre2;
-  }
+  	public String getIsbn() {
+    	return isbn;
+  	}
 
-  public String getIsbn() {
-    return isbn;
-  }
+  	public int getPrice() {
+    	return price;
+  	}
 
-  public int getPrice() {
-    return price;
-  }
+  	public String getDescription() {
+    	return description;
+  	}
 
-  public String getDescription() {
-    return description;
-  }
+	public String getImage() {
+    	return image;
+  	}
 }
