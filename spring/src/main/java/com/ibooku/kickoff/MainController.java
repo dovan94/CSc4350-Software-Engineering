@@ -26,7 +26,8 @@ public class MainController {
 	@RequestMapping("/add")
 	public @ResponseBody String add (@RequestParam String username) {
 		User u = new User();
-		u.setUsername(name);
+		u.setUsername(username);
+
 
 		// Add more attribute setters here
 
