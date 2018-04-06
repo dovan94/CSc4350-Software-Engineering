@@ -1,31 +1,109 @@
 <div class="container">
-    Have an account?
-    <a class="Switch to login" routerLink="/login">Log in</a>
+    <div class="alert alert-danger" [hidden]="agree.valid || agree.pristine">Checkbox must be checked</div>
+    <div class="alert alert-danger" [hidden]="!isExist">This username is already exists</div>
+    <div class="alert alert-success" [hidden]="!success">Congratulation! You registered successfully!</div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+    		<form #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)" novalidate>
+    			<h2>Sign Up <small>It's free and always will be.</small></h2>
+    			<hr class="colorgraph">
 
-<div id="Signup">
-    <h2 class="title">
-        Sign up
-    </h2>
+    			<div class="row">
+    				<div class="col-xs-12 col-sm-6 col-md-6">
+    					<div class="form-group" [ngClass]="{'has-error': first_name.invalid && first_name.dirty}">
+                            <input type="text" name="first_name" class="form-control input-lg" placeholder="First Name" tabindex="1"
+                                   required
+                                   [(ngModel)]="newUser.first_name"
+                                   #first_name="ngModel">
+                            <span class="help-block" *ngIf="first_name.invalid && first_name.dirty">First Name is required</span>
+    					</div>
+    				</div>
+    				<div class="col-xs-12 col-sm-6 col-md-6">
+    					<div class="form-group" [ngClass]="{'has-error': last_name.invalid && last_name.dirty}">
+    						<input type="text" name="last_name" class="form-control input-lg" placeholder="Last Name" tabindex="2"
+                                   required
+                                   [(ngModel)]="newUser.last_name"
+                                   #last_name="ngModel">
+                            <span class="help-block" *ngIf="!last_name.valid && !last_name.pristine">Last Name is required</span>
+    					</div>
+    				</div>
+    			</div>
+    			<div class="form-group" [ngClass]="{'has-error': username.invalid && username.dirty}">
+    				<input type="text" name="username" class="form-control input-lg" placeholder="Username" tabindex="3"
+                           required minlength="4"
+                           [(ngModel)]="newUser.username"
+                           #username="ngModel">
+                    <div *ngIf="username.invalid && username.dirty">
+                        <span class="help-block" *ngIf="username.errors.required">Username is required</span>
+                        <span class="help-block" *ngIf="username.errors.minlength">Username must be at least 4 characters long</span>
+                    </div>
+                </div>
+    			<div class="form-group" [ngClass]="{'has-error': email.invalid && email.dirty}">
+    				<input type="email" name="email" class="form-control input-lg" placeholder="Email Address" tabindex="4"
+                           required
+                           [(ngModel)]="newUser.email"
+                           pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                           #email="ngModel">
+                    <div *ngIf="email.invalid && email.dirty">
+                        <span class="help-block" *ngIf="email.errors.required">Email is required</span>
+                        <span class="help-block" *ngIf="email.errors.pattern">Invalid Email</span>
+                    </div>
+                </div>
 
-    <form>
-        <div class="form-group">
-            <input class="form-control" placeholder="First Name" type="text" name="First Name" required/>
-            <span class="help-block">{{ username_err }}</span>
-        </div>
+    			<div class="row" ngModelGroup="password" #userPassword="ngModelGroup">
+    				<div class="col-xs-12 col-sm-6 col-md-6">
+    					<div class="form-group" [ngClass]="{'has-error': password.invalid && password.dirty}">
+    						<input type="password" name="password" class="form-control input-lg" placeholder="Password" tabindex="5"
+                                   required minlength="6"
+                                   [(ngModel)]="newUser.password"
+                                   #password="ngModel">
+                            <div *ngIf="password.invalid && password.dirty">
+                               <span class="help-block" *ngIf="password.errors.required">Password is required</span>
+                               <span class="help-block" *ngIf="password.errors.minlength">Password must be at least 6 characters long</span>
+                           </div>
+                        </div>
+    				</div>
+    				<div class="col-xs-12 col-sm-6 col-md-6">
+    					<div class="form-group" [ngClass]="{'has-error': (userPassword.invalid|| userPassword.value?.password != userPassword.value?.confirmPwd) && (userPassword.dirty)}">
+    						<input type="password" name="confirmPwd" class="form-control input-lg" placeholder="Confirm Password" tabindex="6"
+                                   required minlength="6"
+                                   ngModel #confirmPwd="ngModel">
+                            <div *ngIf="(userPassword.invalid|| userPassword.value?.password != userPassword.value?.confirmPwd) && (userPassword.dirty)"
+        			 	         class="text-danger">
+            			 		<span class="help-block" *ngIf="userPassword.value?.password != userPassword.value?.confirmPwd">
+            			 			Passwords don't match
+            			 		</span>
+        			 	    </div>
+                        </div>
+    				</div>
 
-        <input placeholder="Last Name" type="text" name="Last Name" id="Last Name" required/>
-        <br>
-        <input spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" type="email" placeholder="Email" name="Email" id="Email" required/>
-        <br>
-        <input spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" type="email" placeholder="Confirm email" name="Email Confirmation" id="Email Confirmation" required/>
-        <br>
-        <input type="Password" name="Password" id="Password" placeholder="Password" required/>
-        <br>
-        <input type="Password" name="Password Confirmation" id="Password Confirmation" placeholder="Confirm Password" required/>
-        <br>
-        <input type="submit" name="commit" value="Create account" class="bttn bttn-green bttn-medium w100p submit" data-disable-with="Create account" />
-        <p class="terms f6 grey-dark mt2 center border-box clip">
-            By signing up, you agree to our terms of use, privacy policy and cookie policy.
-        </p>
-    </form>
+
+    			</div>
+    			<div class="row">
+    				<div class="col-xs-4 col-sm-3 col-md-3" [ngClass]="{'has-error': agree.invalid && agree.dirty}">
+                        <div class="form-group">
+                            I Agree <input type="checkbox" name="agree" tabindex="7"
+                                    required
+                                    ngModel #agree="ngModel">
+                        </div>
+    				</div>
+    				<div class="col-xs-8 col-sm-9 col-md-9">
+    					By clicking <strong class="label label-primary">Register</strong>, you agree to our <span>Terms and Conditions</span>, including our Cookie Use.
+    				</div>
+    			</div>
+
+    			<hr class="colorgraph">
+    			<div class="row">
+    				<div class="col-sm-3 col-md-4 col-md-offset-4">
+                        <input type="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="8"
+                               [disabled]="!signupForm.form.valid || (userPassword.value?.password != userPassword.value?.confirmPwd)">
+                    </div>
+    			</div>
+    		</form>
+    	</div>
     </div>
+    <p>
+        or Have an account?
+        <a routerLink="/login">Log in</a>
+    </p>
+</div>

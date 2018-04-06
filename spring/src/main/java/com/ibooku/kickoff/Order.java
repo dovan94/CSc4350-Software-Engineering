@@ -1,7 +1,6 @@
 package com.ibooku.kickoff;
 
 import javax.persistence.Entity;
-import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,9 +15,9 @@ public class Order {
 	private Integer user_id;
   	private Integer book_id;
 
-	public Cart() {
+	public Order() {
 		this.cart_id = null;
-    	this.user_id = 0;
-    	this.book_id = 0;
+		this.user_id = 0;
+		this.book_id = 0;
 	}
 }
