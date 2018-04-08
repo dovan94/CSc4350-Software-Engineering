@@ -30,31 +30,34 @@ public class Book {
 		this.image = "";
 	}
 
+	public Integer getBook_id() {
+		return book_id;
+	}
 	public String getTitle() {
 		return title;
 	}
 
 	public String getAuthor() {
-    	return author;
+		return author;
   	}
 
   	public String getGenre() {
-    	return genre;
+  		return genre;
   	}
 
   	public String getIsbn() {
-    	return isbn;
+  		return isbn;
   	}
 
   	public double getPrice() {
-    	return price;
+  		return price;
   	}
 
   	public String getDescription() {
-    	return description;
+  		return description;
   	}
 
 	public String getImage() {
-    	return image;
+		return image;
   	}
 }

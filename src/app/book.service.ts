@@ -5,7 +5,6 @@ import { of } from 'rxjs/observable/of';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Book } from './book';
-import { BOOKS } from './mock-books';
 
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
@@ -16,16 +15,19 @@ export class BookService {
     private GoogleBookURL: string = "https://www.googleapis.com/books/v1/volumes?q=";
     private APIKey: string = "&key=AIzaSyBFoKzjV2wbdpI9Vqqmoz0_ZlAua5Nm5BY";
 
+    private bookUrl: string = "http://localhost:8080/api/books/";
+
     constructor (private http: HttpClient) { }
 
     // Get all books from database
-    getBooks(): Observable<Book[]> {
-        return of(BOOKS);
+    getBooks(): Observable<any> {
+        // return of(BOOKS);
+        return this.http.get(this.bookUrl);
     }
 
     // Get a book with the passed in id
-    getBook(id: any): Observable<Book> {
-        return of(BOOKS.find(book => book.id == id));
+    getBook(id: any): Observable<any> {
+        return this.http.get(this.bookUrl + id);
     }
 
 
@@ -39,9 +41,7 @@ export class BookService {
             searchTerm = searchTerm.replace(/\s+/g, '+');
             let URL = this.GoogleBookURL + searchTerm + this.APIKey;
             return this.http.get(URL);
-
         }
     }
-
 
 }
