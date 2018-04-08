@@ -15,33 +15,33 @@ import com.ibooku.kickoff.User;
 import com.ibooku.kickoff.UserRepository;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://127.0.0.1:4200")
 @RequestMapping(path="/api/users")
 public class UserController {
-	
+
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	// Create new user
 	@PostMapping
 	public @ResponseBody String createUser (@RequestBody User newUser) {
 		User u = userRepository.save(newUser);
 		return (u != null) ? "Saved" : "Error";
 	}
-	
+
 	// Get user by username
 	@GetMapping("/{username}")
 	public User getUser (@PathVariable String username) {
 		User u = userRepository.findByUsername(username);
 		return u;
 	}
-	
+
 	// Check if username is exists
 	@GetMapping("/isExist/{username}")
 	public boolean isExist (@PathVariable String username) {
 		return userRepository.findByUsername(username) != null;
 	}
-	
+
 	// Get all users
 	@GetMapping
 	public Iterable<User> getAll () {
