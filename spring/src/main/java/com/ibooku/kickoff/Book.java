@@ -1,5 +1,6 @@
 package com.ibooku.kickoff;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,7 +10,8 @@ import javax.persistence.Id;
 public class Book {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer book_id;
+	@Column(name="book_id")
+	private Integer bId;
 	private String title;
   	private String author;
   	private String genre;
@@ -20,7 +22,7 @@ public class Book {
 
 
 	public Book() {
-		this.book_id = null;
+		this.bId = null;
 		this.title = "";
 	    this.author = "";
 	    this.genre = "";
@@ -31,8 +33,9 @@ public class Book {
 	}
 
 	public Integer getBook_id() {
-		return book_id;
+		return bId;
 	}
+	
 	public String getTitle() {
 		return title;
 	}
