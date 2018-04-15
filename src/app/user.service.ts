@@ -10,7 +10,7 @@ const httpOptions = {
 
 @Injectable()
 export class UserService {
-    private userUrl = "http://localhost:8080/api/users";
+    private userUrl = "http://localhost:8080/api/users/";
 
     constructor(private http: HttpClient) { }
 
@@ -19,11 +19,11 @@ export class UserService {
     }
 
     isExist(username: string): Observable<any> {
-        return this.http.get(this.userUrl + "/isExist/" + username);
+        return this.http.get(this.userUrl + "isExist/" + username);
     }
 
-    createUser(user: User): Observable<any> {
-        return this.http.post(this.userUrl, user, {responseType: 'text'});
+    signup(user: User): Observable<any> {
+        return this.http.post(this.userUrl + "signup", user, {responseType: 'text'});
     }
 
 }
