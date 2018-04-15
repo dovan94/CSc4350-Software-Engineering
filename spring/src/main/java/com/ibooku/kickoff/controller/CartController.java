@@ -1,4 +1,4 @@
-package com.ibooku.kickoff;
+package com.ibooku.kickoff.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-import com.ibooku.kickoff.Cart;
-import com.ibooku.kickoff.Book;
-import com.ibooku.kickoff.CartRepository;
+import com.ibooku.kickoff.model.Book;
+import com.ibooku.kickoff.model.Cart;
+import com.ibooku.kickoff.service.CartRepository;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")

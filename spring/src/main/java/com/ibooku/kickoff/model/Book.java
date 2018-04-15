@@ -1,4 +1,4 @@
-package com.ibooku.kickoff;
+package com.ibooku.kickoff.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

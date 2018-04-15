@@ -1,4 +1,4 @@
-package com.ibooku.kickoff;
+package com.ibooku.kickoff.controller;
 
 import java.util.Optional;
 
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-import com.ibooku.kickoff.Book;
-import com.ibooku.kickoff.BookRepository;
+import com.ibooku.kickoff.model.Book;
+import com.ibooku.kickoff.service.BookRepository;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -38,7 +38,7 @@ public class BookController {
 	}
 	
 	// Get all books
-	@GetMapping
+	@GetMapping("/all")
 	public Iterable<Book> getAll () {
 		return bookRepository.findAll();
 	}

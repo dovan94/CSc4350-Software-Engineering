@@ -1,6 +1,7 @@
-package com.ibooku.kickoff;
+package com.ibooku.kickoff.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-import com.ibooku.kickoff.User;
-import com.ibooku.kickoff.UserRepository;
+import com.ibooku.kickoff.model.User;
+import com.ibooku.kickoff.service.UserRepository;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -22,16 +23,21 @@ public class UserController {
 	@Autowired
 	private UserRepository userRepository;
 	
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
+			
+	
 	// Create new user
-	@PostMapping
-	public @ResponseBody String createUser (@RequestBody User newUser) {
+	@PostMapping("/signup")
+	public @ResponseBody String createUser(@RequestBody User newUser) {
+		newUser.setPassword(bCryptPasswordEncoder.encode(newUser.getPassword()));
 		User u = userRepository.save(newUser);
 		return (u != null) ? "Saved" : "Error";
 	}
 	
 	// Get user by username
 	@GetMapping("/{username}")
-	public User getUser (@PathVariable String username) {
+	public User getUser(@PathVariable String username) {
 		User u = userRepository.findByUsername(username);
 		return u;
 	}
