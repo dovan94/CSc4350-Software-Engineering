@@ -25,7 +25,15 @@
               <a routerLink="/payment">Payment</a>
             </li>
             <li id="login">
-                  <a routerLink="/login">Login</a>
+                <a *ngIf="username == null" routerLink="/login">Login</a>
+
+                <a *ngIf="username" routerLink="/help/contact" id="username">Hi, {{ username }}</a>
+                <ul *ngIf="username">
+                    <li>
+                        <a routerLink="" (click)="signOut()" style="width:100px;">Logout</a>
+                    </li>
+                </ul>
+
             </li>
             <li>
               <a routerLink="/admin">Admin</a>

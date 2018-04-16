@@ -1,6 +1,22 @@
-<h1>Login or create a new account</h1>
-<label for="fname">Username</label><br>
-<input type="text" id="uname" name="username" placeholder="Username"><br>
-<label for="fname">Password</label><br>
-<input type="text" id="pass" name="password" placeholder="Password"><br>
-<div><input type="button" value="Login"> or <input type="button" value="Create Account" routerLink="/create"></div>
+<div>
+    <h1>Login or create a new account</h1>
+    <form #loginForm="ngForm" (ngSubmit)=login()>
+        <div class="form-group">
+            <label for="fname">Username</label><br>
+            <input type="text" id="uname" name="username"
+                   class="form-control"
+                   [(ngModel)]="username"
+                   placeholder="Username"><br>
+        </div>
+        <div class="form-group">
+            <label for="fname">Password</label><br>
+            <input type="password" id="pass" name="password"
+                   class="form-control"
+                   [(ngModel)]="password"
+                   placeholder="Password"><br>
+        </div>
+        <div>
+            <input type="submit" value="Login"> or <input type="button" value="Create Account" routerLink="/create">
+        </div>
+    </form>
+</div>

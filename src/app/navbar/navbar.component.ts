@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
+import { TokenStorage } from '../token.storage';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -8,10 +11,16 @@ import * as $ from 'jquery';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+    username: string;
 
-  constructor() { }
+    constructor(private token: TokenStorage,
+                private router: Router,
+                private location: Location) { }
 
     ngOnInit() {
+        this.username = this.token.getUsername();
+
+
         $(document).ready(function() {
             if ($('.navbar>ul>li').hasClass('selected')){
                 $('.selected').addClass('active');
@@ -46,4 +55,9 @@ export class NavbarComponent implements OnInit {
         });
     }
 
+    signOut(): void {
+        this.token.signOut();
+        // this.router.navigate(['books']);
+        location.reload();
+    }
 }

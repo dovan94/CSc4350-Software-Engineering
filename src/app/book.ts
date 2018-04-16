@@ -1,9 +1,11 @@
 export class Book {
-    id: any;
+    book_id: any;
     title: string;
-    authors: string;
+    author: string;
     description: string;
     categories: string;
     image: string;
     price: number;
+
+    constructor() {}
 }

@@ -42,7 +42,7 @@
     				<input type="email" name="email" class="form-control input-lg" placeholder="Email Address" tabindex="4"
                            required
                            [(ngModel)]="newUser.email"
-                           pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                           pattern="^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                            #email="ngModel">
                     <div *ngIf="email.invalid && email.dirty">
                         <span class="help-block" *ngIf="email.errors.required">Email is required</span>
@@ -76,7 +76,6 @@
         			 	    </div>
                         </div>
     				</div>
-
 
     			</div>
     			<div class="row">

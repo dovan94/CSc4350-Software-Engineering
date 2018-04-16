@@ -31,7 +31,7 @@ export class CreateComponent implements OnInit {
             .subscribe(exist => {
                 this.isExist = exist;
                 if (!this.isExist) {
-                    this.userService.createUser(this.newUser)
+                    this.userService.signup(this.newUser)
                         .subscribe(result => {
                             if (result == "Saved") {
                                 this.success = true;
