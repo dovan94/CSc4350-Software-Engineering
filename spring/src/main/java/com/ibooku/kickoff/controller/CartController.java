@@ -24,11 +24,11 @@ public class CartController {
 	private CartRepository cartRepository;
 	
 	// Add book to cart
-//	@PostMapping
-//	public @ResponseBody String addToCart (@RequestBody Cart item) {
-//		Cart c = cartRepository.save(item);
-//		return (u != null) ? "Saved" : "Error";
-//	}
+	@PostMapping("/add")
+	public @ResponseBody String addToCart (@RequestBody Cart item) {
+		Cart c = cartRepository.save(item);
+		return (c != null) ? "Saved" : "Error";
+	}
 	
 	
 	

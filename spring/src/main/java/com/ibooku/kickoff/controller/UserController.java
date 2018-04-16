@@ -22,15 +22,12 @@ public class UserController {
 
 	@Autowired
 	private UserRepository userRepository;
-<<<<<<< HEAD:spring/src/main/java/com/ibooku/kickoff/UserController.java
 
-=======
-	
+
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
-			
+
 	
->>>>>>> master:spring/src/main/java/com/ibooku/kickoff/controller/UserController.java
 	// Create new user
 	@PostMapping("/signup")
 	public @ResponseBody String createUser(@RequestBody User newUser) {
