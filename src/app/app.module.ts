@@ -1,11 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 
 import { BookService } from './book.service';
 import { UserService } from './user.service';
+import { AuthService } from './auth.service';
+import { TokenStorage } from './token.storage';
+import { Interceptor } from './interceptor';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -41,7 +44,17 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [BookService, UserService],
+  providers: [
+      BookService,
+      UserService,
+      AuthService,
+      TokenStorage,
+      {
+        provide: HTTP_INTERCEPTORS,
+        useClass: Interceptor,
+        multi: true
+      }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

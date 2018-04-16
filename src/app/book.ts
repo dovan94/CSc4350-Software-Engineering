@@ -6,4 +6,6 @@ export class Book {
     categories: string;
     image: string;
     price: number;
+
+    constructor() {}
 }

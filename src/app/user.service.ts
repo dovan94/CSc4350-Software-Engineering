@@ -14,8 +14,8 @@ export class UserService {
 
     constructor(private http: HttpClient) { }
 
-    getUser(name: string): Observable<any> {
-        return this.http.get(this.userUrl + name);
+    getUser(username: string): Observable<any> {
+        return this.http.get(this.userUrl + username);
     }
 
     isExist(username: string): Observable<any> {

@@ -22,10 +22,10 @@ export class BookService {
     // Get all books from database
     getBooks(): Observable<any> {
         // return of(BOOKS);
-        return this.http.get(this.bookUrl);
+        return this.http.get(this.bookUrl + "all");
     }
 
-    // Get a book with the passed in id
+    // Get book by id
     getBook(id: any): Observable<any> {
         return this.http.get(this.bookUrl + id);
     }

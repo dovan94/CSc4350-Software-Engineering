@@ -2,7 +2,7 @@
     <div class="row text-center" style="display:flex; flex-wrap:wrap;">
         <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let book of books">
             <div>
-                <a routerLink="/book/{{ book.id }}"><img src="{{ book.image }}" class="img-thumbnail" style="height:180px;"/></a>
+                <a routerLink="/book/{{ book.book_id }}"><img src="{{ book.image }}" class="img-thumbnail" style="height:180px;"/></a>
                 <h6>{{ book.title }}</h6>
                 <h5>{{ book.author }}</h5>
                 <h6>${{ book.price }}</h6>

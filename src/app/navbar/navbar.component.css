@@ -167,3 +167,6 @@ img {
     color: grey;
     width: 80%;
 }
+#username {
+    text-transform: none;
+}

@@ -48,9 +48,5 @@ public class AuthenticationController {
 		return ResponseEntity.ok(token);
 	}
 	
-	@GetMapping("/welcome-message")
-	public @ResponseBody String message() {
-		return "hello";
-	}
 }
 
