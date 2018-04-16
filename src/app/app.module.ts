@@ -21,6 +21,7 @@ import { BooksComponent } from './books/books.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { AdminSearchComponent } from './admin-search/admin-search.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
+import { CartComponent } from './cart/cart.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
     BooksComponent,
     BookDetailComponent,
     AdminSearchComponent,
-    AdminPageComponent
+    AdminPageComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
