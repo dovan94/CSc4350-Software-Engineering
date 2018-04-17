@@ -9,6 +9,7 @@ import { CreateComponent } from './create/create.component';
 import { PaymentComponent } from './payment/payment.component';
 import { FaqComponent } from './faq/faq.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
+import { CartComponent } from './cart/cart.component';
 
 
 const routes: Routes = [
@@ -20,7 +21,8 @@ const routes: Routes = [
     { path: 'create', component: CreateComponent},
     { path: 'payment', component: PaymentComponent},
     { path: 'help/faq', component: FaqComponent},
-    { path: 'admin', component: AdminPageComponent }
+    { path: 'admin', component: AdminPageComponent },
+    { path: 'cart', component: CartComponent}
 ];
 
 @NgModule({

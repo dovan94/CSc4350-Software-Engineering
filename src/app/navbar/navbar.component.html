@@ -29,6 +29,9 @@
 
                 <a *ngIf="username" routerLink="/help/contact" id="username">Hi, {{ username }}</a>
                 <ul *ngIf="username">
+                  <li>
+                    <a routerLink="/cart" style="width:100px;">Cart</a>
+                  </li>
                     <li>
                         <a routerLink="" (click)="signOut()" style="width:100px;">Logout</a>
                     </li>
