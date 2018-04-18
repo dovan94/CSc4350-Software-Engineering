@@ -14,7 +14,7 @@ export class CartService {
             userId: userId,
             bookId: bookId
         }
-        return this.http.post(this.userUrl + "add-to-cart", item);
+        return this.http.post(this.userUrl + "add", item);
     }
 
 }

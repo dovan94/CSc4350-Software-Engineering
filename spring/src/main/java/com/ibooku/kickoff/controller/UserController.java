@@ -75,19 +75,5 @@ public class UserController {
 		return userRepository.findAll();
 	}
 	
-	// Add item to cart
-	@PostMapping("/add-to-cart")
-	public ResponseEntity<?> addToCart(@RequestBody Cart item)	{
-		Integer user_id = item.getUserId();
-		Integer book_id = item.getBookId();
-
-		User user = userRepository.findByUId(user_id);
-		if (user != null) {
-			user.getCartItems().add(bookRepository.findByBId(book_id));
-			userRepository.save(user);
-		}
-
-		return new ResponseEntity<>(user, HttpStatus.OK);
-	}
 
 }
