@@ -1,6 +1,5 @@
 package com.ibooku.kickoff.controller;
 
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,20 +25,26 @@ public class BookController {
 	
 	// Add new book
 	@PostMapping
-	public @ResponseBody String addBook (@RequestBody Book newBook) {
+	public @ResponseBody String addBook(@RequestBody Book newBook) {
 		Book b = bookRepository.save(newBook);
 		return (b != null) ? "Saved" : "Error";
 	}
 	
 	// Get book by id
 	@GetMapping("/{id}")
-	public Book findById (@PathVariable("id") Integer id) {
+	public Book findById(@PathVariable("id") Integer id) {
 		return bookRepository.findByBId(id);
 	}
 	
-	// Get all books
+	// Get book by title
 	@GetMapping
-	public Iterable<Book> getAll () {
+	public Book findByTitle(@RequestParam("title") String title) {
+		return bookRepository.findByTitle(title);
+	}
+	
+	// Get all books
+	@GetMapping("/all")
+	public Iterable<Book> getAll() {
 		return bookRepository.findAll();
 	}
 

@@ -23,42 +23,44 @@ import { BookDetailComponent } from './book-detail/book-detail.component';
 import { AdminSearchComponent } from './admin-search/admin-search.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { CartComponent } from './cart/cart.component';
+import { BookSearchComponent } from './book-search/book-search.component';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    ContactComponent,
-    LoginComponent,
-    FaqComponent,
-    CreateComponent,
-    PaymentComponent,
-    BooksComponent,
-    BookDetailComponent,
-    AdminSearchComponent,
-    AdminPageComponent,
-    CartComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
-  providers: [
-      BookService,
-      UserService,
-      CartService,
-      AuthService,
-      TokenStorage,
-      {
-        provide: HTTP_INTERCEPTORS,
-        useClass: Interceptor,
-        multi: true
-      }
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        NavbarComponent,
+        ContactComponent,
+        LoginComponent,
+        FaqComponent,
+        CreateComponent,
+        PaymentComponent,
+        BooksComponent,
+        BookDetailComponent,
+        AdminSearchComponent,
+        AdminPageComponent,
+        CartComponent,
+        BookSearchComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule
+    ],
+    providers: [
+        BookService,
+        UserService,
+        CartService,
+        AuthService,
+        TokenStorage,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: Interceptor,
+            multi: true
+        }
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

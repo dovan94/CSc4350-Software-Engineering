@@ -3,7 +3,7 @@ export class Book {
     title: string;
     author: string;
     description: string;
-    categories: string;
+    genre: string;
     image: string;
     price: number;
 

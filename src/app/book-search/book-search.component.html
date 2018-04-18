@@ -1,0 +1,13 @@
+<div>
+    <input #searchBox id="search-box"
+            type="text"
+            placeholder="&#xf002; &nbsp; Search"
+            (keyup)="search(searchBox.value)"/>
+
+    <ul>
+        <li *ngFor="let book of books$ | async">
+            <a routerLink="/book/{{ book.book_id }}"><img src="{{ book.image }}"/></a>
+            <i>{{ book.title }}</i>
+        </li>
+    </ul>
+</div>

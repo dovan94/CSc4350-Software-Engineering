@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError, map, tap } from 'rxjs/operators';
 
 import { Book } from './book';
 
@@ -18,18 +19,37 @@ export class BookService {
 
     private bookUrl: string = "http://localhost:8080/api/books/";
 
-    constructor (private http: HttpClient) { }
+    private books: Book[];
+    constructor (private http: HttpClient) {
+        this.getBooks().subscribe(bookList => this.books = bookList);
+    }
 
     // Get all books from database
     getBooks(): Observable<any> {
-        // return of(BOOKS);
-        return this.http.get(this.bookUrl);
+        return this.http.get(this.bookUrl + "all");
     }
 
     // Get book by id
     getBook(id: string): Observable<any> {
         return this.http.get(this.bookUrl + id);
     }
+
+    // Search books from inventory
+    searchBooks(term: string): Observable<any> {
+        if(!term.trim()) {
+            return of([]);
+        }
+        var regex = new RegExp(term.toLowerCase());
+        var length = this.books.length;
+        var result: Book[] = [];
+        for (var i = 0; i < length; i++) {
+            if (regex.test(this.books[i].title.toLowerCase())) {
+                result.push(this.books[i]);
+            }
+        }
+        return of(result);
+    }
+
 
     search(terms: Observable<string>) {
         return terms.debounceTime(300)
