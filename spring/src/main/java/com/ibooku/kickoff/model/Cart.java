@@ -7,23 +7,37 @@ import javax.persistence.Id;
 
 // import User and Book?
 
-@Entity
+//@Entity
 public class Cart {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer cart_id;
-	private Integer user_id;
-  	private Integer book_id;
+//	@Id
+//	@GeneratedValue(strategy=GenerationType.IDENTITY)
+//	private Integer cart_id;
+	private Integer userId;
+  	private Integer bookId;
 
 	public Cart() {
-		this.cart_id = null;
-    	this.user_id = 0;
-    	this.book_id = 0;
+    		this.userId = 0;
+    		this.bookId = 0;
 	}
 
-  // Add which getters & setters?
-
-	public Integer getUser() {
-		return user_id;
+	
+	public Integer getUserId() {
+		return userId;
+	}
+	public void setUserId(Integer user_id) {
+		this.userId = user_id;
+	}
+	
+	public Integer getBookId() {
+		return bookId;
+	}
+	public void setBookId(Integer book_id) {
+		this.bookId = book_id;
+	}
+	
+	@Override
+	public String toString() {
+		String result = "uid: " + userId + " bid: " + bookId;
+		return result;
 	}
 }

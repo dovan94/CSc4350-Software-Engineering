@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Book } from './book';
 
+
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
@@ -22,14 +23,13 @@ export class BookService {
     // Get all books from database
     getBooks(): Observable<any> {
         // return of(BOOKS);
-        return this.http.get(this.bookUrl + "all");
+        return this.http.get(this.bookUrl);
     }
 
     // Get book by id
-    getBook(id: any): Observable<any> {
+    getBook(id: string): Observable<any> {
         return this.http.get(this.bookUrl + id);
     }
-
 
     search(terms: Observable<string>) {
         return terms.debounceTime(300)

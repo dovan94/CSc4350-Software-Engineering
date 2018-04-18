@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 
 import { BookService } from './book.service';
 import { UserService } from './user.service';
+import { CartService } from './cart.service';
 import { AuthService } from './auth.service';
 import { TokenStorage } from './token.storage';
 import { Interceptor } from './interceptor';
@@ -49,6 +50,7 @@ import { CartComponent } from './cart/cart.component';
   providers: [
       BookService,
       UserService,
+      CartService,
       AuthService,
       TokenStorage,
       {

@@ -13,21 +13,21 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.ibooku.kickoff.model.Book;
 import com.ibooku.kickoff.model.Cart;
-import com.ibooku.kickoff.service.CartRepository;
+//import com.ibooku.kickoff.service.CartRepository;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping(path="/api/carts")
+@RequestMapping(path="/api/cart")
 public class CartController {
 	
-	@Autowired
-	private CartRepository cartRepository;
+//	@Autowired
+//	private CartRepository cartRepository;
 	
 	// Add book to cart
-//	@PostMapping
+//	@PostMapping("/add")
 //	public @ResponseBody String addToCart (@RequestBody Cart item) {
 //		Cart c = cartRepository.save(item);
-//		return (u != null) ? "Saved" : "Error";
+//		return (c != null) ? "Saved" : "Error";
 //	}
 	
 	

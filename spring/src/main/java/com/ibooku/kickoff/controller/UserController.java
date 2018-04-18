@@ -1,6 +1,12 @@
 package com.ibooku.kickoff.controller;
 
+import java.io.IOException;
+import java.util.Optional;
+
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +18,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ibooku.kickoff.model.Cart;
 import com.ibooku.kickoff.model.User;
+import com.ibooku.kickoff.service.BookRepository;
 import com.ibooku.kickoff.service.UserRepository;
 
 @RestController
@@ -22,6 +33,9 @@ public class UserController {
 	
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private BookRepository bookRepository;
 	
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -36,9 +50,16 @@ public class UserController {
 	}
 	
 	// Get user by username
-	@GetMapping("/{username}")
-	public User getUser(@PathVariable String username) {
+	@GetMapping("username/{username}")
+	public User getByUsername(@PathVariable String username) {
 		User u = userRepository.findByUsername(username);
+		return u;
+	}
+	
+	// Get user by id
+	@GetMapping("/{id}")
+	public User getById(@PathVariable Integer id) {
+		User u = userRepository.findByUId(id);
 		return u;
 	}
 	
@@ -52,6 +73,21 @@ public class UserController {
 	@GetMapping
 	public Iterable<User> getAll () {
 		return userRepository.findAll();
+	}
+	
+	// Add item to cart
+	@PostMapping("/add-to-cart")
+	public ResponseEntity<?> addToCart(@RequestBody Cart item)	{
+		Integer user_id = item.getUserId();
+		Integer book_id = item.getBookId();
+
+		User user = userRepository.findByUId(user_id);
+		if (user != null) {
+			user.getCartItems().add(bookRepository.findByBId(book_id));
+			userRepository.save(user);
+		}
+
+		return new ResponseEntity<>(user, HttpStatus.OK);
 	}
 
 }

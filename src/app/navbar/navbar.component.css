@@ -170,3 +170,6 @@ img {
 #username {
     text-transform: none;
 }
+#cart {
+    float: right;
+}

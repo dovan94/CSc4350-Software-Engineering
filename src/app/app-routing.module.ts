@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { CreateComponent } from './create/create.component';
 import { PaymentComponent } from './payment/payment.component';
 import { FaqComponent } from './faq/faq.component';
+import { CartComponent } from './cart/cart.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 
 
@@ -16,10 +17,11 @@ const routes: Routes = [
     { path: 'books', component: BooksComponent },
     { path: 'book/:id', component: BookDetailComponent },
     { path: 'help/contact', component: ContactComponent },
-    { path: 'login', component: LoginComponent},
-    { path: 'create', component: CreateComponent},
-    { path: 'payment', component: PaymentComponent},
-    { path: 'help/faq', component: FaqComponent},
+    { path: 'login', component: LoginComponent },
+    { path: 'create', component: CreateComponent },
+    { path: 'payment', component: PaymentComponent },
+    { path: 'help/faq', component: FaqComponent },
+    { path: 'cart', component: CartComponent },
     { path: 'admin', component: AdminPageComponent }
 ];
 
