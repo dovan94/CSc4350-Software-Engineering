@@ -26,16 +26,13 @@ public class OrderController {
 
   @Autowired
   private OrderRepository orderRepository;
-
-  @Autowired
-	private CartRepository cartRepository;
+  // @Autowired
+	// private CartRepository cartRepository;
 
   // Add cart item to order
   @PostMapping("/add")
 	public @ResponseBody String addToOrder (@RequestBody Order item) {
     Order c = orderRepository.save(item);
-
-    cartReposity.removeByUser_id(item);
 		return (c != null) ? "Saved" : "Error";
 	}
 

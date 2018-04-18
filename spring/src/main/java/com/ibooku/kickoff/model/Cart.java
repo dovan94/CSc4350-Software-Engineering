@@ -13,15 +13,19 @@ public class Cart {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer cart_id;
 	private Integer user_id;
-  	private Integer book_id;
+  private Integer book_id;
 
 	public Cart() {
 		this.cart_id = null;
-    	this.user_id = 0;
-    	this.book_id = 0;
+    this.user_id = 0;
+    this.book_id = 0;
 			// Add addresses
 	}
 
+	// get user_id
+	public Integer getUser_id() {
+		return user_id;
+	}
 
 
 }
