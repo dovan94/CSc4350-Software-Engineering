@@ -1,6 +1,7 @@
 package com.ibooku.kickoff.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,31 +12,32 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-import com.ibooku.kickoff.model.Book;
 import com.ibooku.kickoff.model.Cart;
+import com.ibooku.kickoff.model.User;
+import com.ibooku.kickoff.model.Book;
+import com.ibooku.kickoff.service.OrderRepository;
 import com.ibooku.kickoff.service.CartRepository;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping(path="/api/carts")
-public class CartController {
+@RequestMapping(path="/api/orders")
 
-	@Autowired
+public class OrderController {
+
+  @Autowired
+  private OrderRepository orderRepository;
+
+  @Autowired
 	private CartRepository cartRepository;
 
-	// Add book to cart
-	@PostMapping("/add")
-	public @ResponseBody String addToCart (@RequestBody Cart item) {
-		Cart c = cartRepository.save(item);
+  // Add cart item to order
+  @PostMapping("/add")
+	public @ResponseBody String addToOrder (@RequestBody Order item) {
+    Order c = orderRepository.save(item);
+
+    cartReposity.removeByUser_id(item);
 		return (c != null) ? "Saved" : "Error";
 	}
 
-
-
-	// Get all items in cart
-//	@GetMapping
-//	public Iterable<Book> getAll () {
-//		return cartRepository.findAll();
-//	}
 
 }

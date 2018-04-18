@@ -19,11 +19,9 @@ public class Cart {
 		this.cart_id = null;
     	this.user_id = 0;
     	this.book_id = 0;
+			// Add addresses
 	}
 
-  // Add which getters & setters?
 
-	public Integer getUser() {
-		return user_id;
-	}
+
 }
