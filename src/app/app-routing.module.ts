@@ -19,14 +19,6 @@ const routes: Routes = [
     { path: 'books', component: BooksComponent },
     { path: 'book/:id', component: BookDetailComponent },
     { path: 'help/contact', component: ContactComponent },
-<<<<<<< HEAD
-    { path: 'login', component: LoginComponent},
-    { path: 'create', component: CreateComponent},
-    { path: 'payment', component: PaymentComponent},
-    { path: 'help/faq', component: FaqComponent},
-    { path: 'admin', component: AdminPageComponent },
-    { path: 'cart', component: CartComponent}
-=======
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignUpComponent },
     { path: 'payment', component: PaymentComponent },
@@ -34,7 +26,6 @@ const routes: Routes = [
     { path: 'cart', component: CartComponent },
     { path: 'checkout', component: CheckoutComponent },
     { path: 'admin', component: AdminPageComponent }
->>>>>>> master
 ];
 
 @NgModule({

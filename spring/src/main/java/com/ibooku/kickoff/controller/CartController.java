@@ -34,21 +34,34 @@ public class CartController {
 
 	@Autowired
 
+	private UserRepository userRepository;
+	
+	@Autowired
+	private BookRepository bookRepository;
 
-	// Delete book from cart
-	@DeleteMapping("/delete")
-	public @ResponseBody String deleteFromCart( @RequestBody Cart item) {
-		String user_id = item.getUser_id();
-		cartRepository.deleteFromCart(user_id);
-		return;
-	}
+	
+	// Add item to cart
+	@Transactional
+	@PostMapping("/add")
+	public ResponseEntity<?> addToCart(@RequestBody Cart newItem) {
 
+		Integer user_id = newItem.getUser().getUser_id();
+		Integer book_id = newItem.getBook().getBook_id();
+		
+		User user = userRepository.findByUId(user_id);
+		Book book = bookRepository.findByBId(book_id);
+	
+	    CartId cid = new CartId(user_id, book_id);
+		newItem.setCartId(cid);
+		
+		//add new item to cart
+		book.getUsers().add(newItem);
+		user.getCartItems().add(newItem);
+		
+		//populate to Cart table
+		userRepository.save(user);
+		bookRepository.save(book);
 
-	// Get all items in cart
-//	@GetMapping
-//	public Iterable<Book> getAll () {
-//		return cartRepository.findAll();
-//	}
 		return new ResponseEntity<>(user, HttpStatus.OK);
 	}
 	

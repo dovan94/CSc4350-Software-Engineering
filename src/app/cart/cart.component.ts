@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
-import { OrderService } from '../order.OrderService'
-=======
 import { Book } from '../book';
 import { Item } from '../item';
 import { CartService } from '../cart.service';
 import { TokenStorage } from '../token.storage';
->>>>>>> master
 
 @Component({
   selector: 'app-cart',
