@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
                 this.userService.getUser(this.username)
                     .subscribe((foundUser: User) => {
                         this.token.saveUsername(foundUser.username);
+                        this.token.saveUserId(foundUser.user_id);
                         location.reload();
                         this.router.navigate(['books']);
                     })

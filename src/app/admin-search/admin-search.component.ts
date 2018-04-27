@@ -23,19 +23,23 @@ export class AdminSearchComponent implements OnInit {
 
     // private GoogleBookURL: string = "https://www.googleapis.com/books/v1/volumes?q=";
 
-    books: any[] = [];
+    books: Book[] = [];
     dropDown = false;
     searchWidth = true;
     searchTerm$ = new Subject<string>();
 
     constructor (
         private bookService: BookService
-        // private http: HttpClient
     ) {}
 
     ngOnInit() {
+        this.bookService.getBooks()
+            .subscribe(bookList => this.books = bookList);
+
 
     }
+
+
 
     search(term: string) {
         if (term.trim().length !== 0) {
@@ -46,6 +50,8 @@ export class AdminSearchComponent implements OnInit {
                    });
         }
     }
+
+
     onfocus(){
         this.dropDown = !this.dropDown;
         if(this.dropDown)

@@ -1,5 +1,5 @@
 export class User {
-    id: number;
+    user_id: string;
     username: string;
     email: string;
     password: string;
@@ -7,4 +7,8 @@ export class User {
     last_name: string;
 
     constructor(username, email, password, first_name, last_name) {}
+
+    public setId(id: string): void {
+        this.user_id = id;
+    }
 }

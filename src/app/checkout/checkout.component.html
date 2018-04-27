@@ -1,0 +1,19 @@
+<div class="container">
+    <h2>Checkout</h2>
+    <div>
+        <button type="button"
+                class="btn btn-info"
+                [attr.aria-expanded]="!isCollapse"
+                aria-controls="cart"
+                (click)="toggle()">
+            <span><i class="{{ toggleIcon }}"></i></span>
+        </button>
+        Review Cart
+        <div id="cart" [ngbCollapse]="isCollapse">
+            <!-- injects cart component -->
+            <app-cart></app-cart>
+        </div>
+
+        <!-- payment stuffs -->
+    </div>
+</div>

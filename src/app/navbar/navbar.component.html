@@ -21,9 +21,15 @@
                     </li>
                 </ul>
             </li>
+<<<<<<< HEAD
             <!-- <li>
               <a routerLink="/payment">Payment</a>
             </li> -->
+=======
+            <li id="cart">
+              <a routerLink="/cart"><i class="fas fa-shopping-bag"></i></a>
+            </li>
+>>>>>>> master
             <li id="login">
                 <a *ngIf="username == null" routerLink="/login">Login</a>
 
@@ -35,19 +41,18 @@
                     <li>
                         <a routerLink="" (click)="signOut()" style="width:100px;">Logout</a>
                     </li>
+                    <li>
+                        <a routerLink="/admin" style="width:100px;">Admin</a>
+                    </li>
                 </ul>
+            </li>
 
-            </li>
-            <li>
-              <a routerLink="/admin">Admin</a>
-            </li>
             <li class="pointer"><span></span></li>
         </ul>
 
         <div class="wrapper">
-            <input #searchBox id="search-box"
-                    type="text"
-                    placeholder="&#xf002; &nbsp; Search"/>
+            <!-- inject search box -->
+            <app-book-search></app-book-search>
         </div>
 
     </div>

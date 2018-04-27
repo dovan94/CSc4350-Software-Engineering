@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -20,7 +21,7 @@ export class NavbarComponent implements OnInit {
     ngOnInit() {
         this.username = this.token.getUsername();
 
-
+        // navbar styling
         $(document).ready(function() {
             if ($('.navbar>ul>li').hasClass('selected')){
                 $('.selected').addClass('active');
@@ -54,6 +55,8 @@ export class NavbarComponent implements OnInit {
             });
         });
     }
+
+
 
     signOut(): void {
         this.token.signOut();

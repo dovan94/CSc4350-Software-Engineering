@@ -1,35 +1,48 @@
 package com.ibooku.kickoff.model;
 
+import java.util.Set;
+import java.io.Serializable;
+import java.util.HashSet;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-public class User {
+public class User implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer user_id;
+	@Column(name="user_id")
+	private Integer uId;
 	private String username;
 	private String email;
 	private String password;
 	private String first_name;
 	private String last_name;
 	
-//	public User() {
-//		user_id = null;
-//		username = "";
-//		email = "";
-//		password = "";
-//		setFirst_name("");
-//		setLast_name("");
-//	}
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	@JsonManagedReference
+	private Set<Cart> cartItems = new HashSet<>();;
+	
+	
+//	@ManyToMany
+//	@JoinTable(name = "Cart",
+//		joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"),
+//		inverseJoinColumns = @JoinColumn(name = "book_id", referencedColumnName = "book_id"))
+//	private Set<Book> cart_books = new HashSet<>();
+	
 	//user_id's getter and setter
 	public Integer getUser_id() {
-		return user_id;
+		return uId;
 	}
 	public void setUser_id(Integer id) {
-		user_id = id;
+		uId = id;
 	}
 
 	// Username's getter and setter
@@ -72,6 +85,25 @@ public class User {
 		this.last_name = last_name;
 	}
 	
+	// cart items' getter and setter
+//	public Set<Book> getCartItems() {
+//		return cart_books;
+//	}
+//	public void setCartItems(Set<Book> cart_books) {
+//		this.cart_books = cart_books;
+//	}
 	
+	public Set<Cart> getCartItems() {
+		return cartItems;
+	}
+	public void setCartItems(Set<Cart> cart) {
+		cartItems = cart;
+	}
+	
+	@Override
+	public String toString() {
+		String result = "" + uId;
+		return result;
+	}
 }
 

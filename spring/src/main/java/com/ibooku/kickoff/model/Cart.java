@@ -1,31 +1,86 @@
 package com.ibooku.kickoff.model;
 
+import javax.persistence.AssociationOverride;
+import javax.persistence.AssociationOverrides;
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
+import javax.persistence.Table;
 
-// import User and Book?
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+
 
 @Entity
+@Table(name = "Cart")
 public class Cart {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer cart_id;
-	private Integer user_id;
-  private Integer book_id;
 
-	public Cart() {
-		this.cart_id = null;
-    this.user_id = 0;
-    this.book_id = 0;
-			// Add addresses
+	
+	@EmbeddedId
+	private CartId cartId;
+
+	@ManyToOne
+	@MapsId("userId")
+	@JoinColumn(name = "user_id")
+	private User user;
+	
+	@ManyToOne
+	@MapsId("bookId")
+	@JoinColumn(name = "book_id")
+	private Book book;
+	
+	@Column
+	private int quantity;
+	
+	public CartId getCartId() {
+		return cartId;
 	}
-
-	// get user_id
-	public Integer getUser_id() {
-		return user_id;
+	public void setCartId(CartId cid) {
+		cartId = cid;
 	}
-
-
+	
+	// JsonBackReference prevents infinite recursion when performing a join
+	// because User refers to Cart and Cart refers to User at the same time
+	// This tells Spring Boot to ignore when Cart refers to User
+	@JsonBackReference
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	public Book getBook() {
+		return book;
+	}
+	public void setBook(Book book) {
+		this.book = book;
+	}
+	
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	
+	@Override
+	public String toString() {
+		String result = "uid: " + user + "\nbid: " + book + "\nquantity:" + quantity;
+		return result;
+	}
+	
+	
+//	@Override
+//	public String toString() {
+//		String result = "uid: " + userId + " bid: " + bookId;
+//		return result;
+//	}
+>>>>>>> master
 }
