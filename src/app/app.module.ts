@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
@@ -16,7 +17,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
 import { FaqComponent } from './faq/faq.component';
-import { CreateComponent } from './create/create.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 import { PaymentComponent } from './payment/payment.component';
 import { BooksComponent } from './books/books.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
@@ -24,6 +25,7 @@ import { AdminSearchComponent } from './admin-search/admin-search.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { CartComponent } from './cart/cart.component';
 import { BookSearchComponent } from './book-search/book-search.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 
 @NgModule({
@@ -33,21 +35,23 @@ import { BookSearchComponent } from './book-search/book-search.component';
         ContactComponent,
         LoginComponent,
         FaqComponent,
-        CreateComponent,
+        SignUpComponent,
         PaymentComponent,
         BooksComponent,
         BookDetailComponent,
         AdminSearchComponent,
         AdminPageComponent,
         CartComponent,
-        BookSearchComponent
+        BookSearchComponent,
+        CheckoutComponent
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        NgbModule.forRoot()
     ],
     providers: [
         BookService,

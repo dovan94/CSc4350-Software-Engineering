@@ -34,10 +34,10 @@ export class TokenStorage {
         window.sessionStorage.setItem(USERNAME, username);
     }
 
-    public getUserID(): string {
+    public getUserId(): string {
         return sessionStorage.getItem(USER_ID);
     }
-    public saveUserID(id: string) {
+    public saveUserId(id: string) {
         window.sessionStorage.removeItem(USER_ID);
         window.sessionStorage.setItem(USER_ID, id);
     }

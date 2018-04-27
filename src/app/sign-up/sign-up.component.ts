@@ -6,11 +6,12 @@ import { User } from '../user';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-    selector: 'app-create',
-    templateUrl: './create.component.html',
-    styleUrls: ['./create.component.css']
+  selector: 'app-sign-up',
+  templateUrl: './sign-up.component.html',
+  styleUrls: ['./sign-up.component.css']
 })
-export class CreateComponent implements OnInit {
+export class SignUpComponent implements OnInit {
+
     newUser: User;
     username_err: string;
     isExist: boolean = false;

@@ -19,7 +19,7 @@ export class BookDetailComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.book = new Book();
+        this.book = new Book("", "", "", "", "");
         this.getBookDetail();
     }
 

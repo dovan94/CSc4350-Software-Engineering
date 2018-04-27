@@ -5,10 +5,11 @@ import { BooksComponent } from './books/books.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
-import { CreateComponent } from './create/create.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 import { PaymentComponent } from './payment/payment.component';
 import { FaqComponent } from './faq/faq.component';
 import { CartComponent } from './cart/cart.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 
 
@@ -18,10 +19,11 @@ const routes: Routes = [
     { path: 'book/:id', component: BookDetailComponent },
     { path: 'help/contact', component: ContactComponent },
     { path: 'login', component: LoginComponent },
-    { path: 'create', component: CreateComponent },
+    { path: 'signup', component: SignUpComponent },
     { path: 'payment', component: PaymentComponent },
     { path: 'help/faq', component: FaqComponent },
     { path: 'cart', component: CartComponent },
+    { path: 'checkout', component: CheckoutComponent },
     { path: 'admin', component: AdminPageComponent }
 ];
 

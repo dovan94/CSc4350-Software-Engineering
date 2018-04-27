@@ -1,11 +1,18 @@
 export class Book {
-    book_id: number;
+    book_id: string;
     title: string;
     author: string;
     description: string;
+    isbn: string;
     genre: string;
-    image: string;
     price: number;
+    image: string;
+    stock: number;
 
-    constructor() {}
+    constructor(title, author, description, genre, image) {
+    }
+
+    public setId(id: string): void {
+        this.book_id = id;
+    }
 }

@@ -29,8 +29,9 @@ export class BooksComponent implements OnInit {
     }
 
     addToCart(book_id: string) {
-        let user_id = this.token.getUserID();
-        this.cartService.addToCart(user_id, book_id)
+        let user_id = this.token.getUserId();
+
+        this.cartService.addToCart(user_id, book_id.toString())
             .subscribe(() => this.isAdded = true);
 
     }
