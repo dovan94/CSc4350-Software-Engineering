@@ -72,6 +72,6 @@ public class CartController {
 		User user = userRepository.findByUId(id);
 		return user.getCartItems();
 	}
->>>>>>> master
+
 
 }

@@ -25,5 +25,9 @@
             <td>${{ cart.subtotal }}</td>
         </tr>
     </table>
+    <!-- Jeff - changed from
     <a routerLink="/checkout"><button>Proceed to checkout</button></a>
+   -->
+    <a (click)="updateCart()"><button>Proceed to checkout</button></a>
+
 </div>

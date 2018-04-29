@@ -30,11 +30,11 @@ public class OrderController {
 	// private CartRepository cartRepository;
 
   // Add cart item to order
-  @PostMapping("/add")
-	public @ResponseBody String addToOrder (@RequestBody Order item) {
-    Order c = orderRepository.save(item);
-		return (c != null) ? "Saved" : "Error";
-	}
+  //@PostMapping("/add")
+	//public @ResponseBody String addToOrder (@RequestBody Order item) {
+    //Order c = orderRepository.save(item);
+	//	return (c != null) ? "Saved" : "Error";
+	
 
 
 }

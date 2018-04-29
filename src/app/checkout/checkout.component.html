@@ -10,10 +10,12 @@
         </button>
         Review Cart
         <div id="cart" [ngbCollapse]="isCollapse">
+            <!-- payment stuffs -->
+            <app-payment></app-payment>
             <!-- injects cart component -->
             <app-cart></app-cart>
-        </div>
 
-        <!-- payment stuffs -->
+
+        </div>
     </div>
 </div>

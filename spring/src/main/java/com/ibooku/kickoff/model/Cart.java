@@ -82,5 +82,4 @@ public class Cart {
 //		String result = "uid: " + userId + " bid: " + bookId;
 //		return result;
 //	}
->>>>>>> master
 }

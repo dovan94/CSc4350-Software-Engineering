@@ -11,7 +11,7 @@ import { FaqComponent } from './faq/faq.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
-import { CartComponent } from './cart/cart.component';
+//import { CartComponent } from './cart/cart.component';
 
 
 const routes: Routes = [
