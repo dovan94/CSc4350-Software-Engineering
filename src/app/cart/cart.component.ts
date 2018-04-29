@@ -53,4 +53,10 @@ export class CartComponent implements OnInit {
         this.cart.subtotal = temp;
     }
 
+    updateCart(): void{
+      let userId = this.token.getUserId();
+
+      this.cartService.updateCart(userId).subscribe();
+    }
+
 }
