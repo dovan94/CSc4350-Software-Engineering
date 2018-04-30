@@ -1,5 +1,6 @@
 package com.ibooku.kickoff.controller;
 
+import java.util.Iterator;
 import java.util.Set;
 
 
@@ -33,13 +34,12 @@ import com.ibooku.kickoff.service.UserRepository;
 public class CartController {
 
 	@Autowired
-
 	private UserRepository userRepository;
-	
+
 	@Autowired
 	private BookRepository bookRepository;
 
-	
+
 	// Add item to cart
 	@Transactional
 	@PostMapping("/add")
@@ -47,25 +47,47 @@ public class CartController {
 
 		Integer user_id = newItem.getUser().getUser_id();
 		Integer book_id = newItem.getBook().getBook_id();
-		
+
 		User user = userRepository.findByUId(user_id);
 		Book book = bookRepository.findByBId(book_id);
-	
-	    CartId cid = new CartId(user_id, book_id);
+
+	  CartId cid = new CartId(user_id, book_id);
 		newItem.setCartId(cid);
-		
+
 		//add new item to cart
 		book.getUsers().add(newItem);
 		user.getCartItems().add(newItem);
-		
+
 		//populate to Cart table
 		userRepository.save(user);
 		bookRepository.save(book);
 
 		return new ResponseEntity<>(user, HttpStatus.OK);
 	}
-	
-	
+
+	//Jeff - check ordered
+	@Transactional
+	@PostMapping("/submit-order")
+	public ResponseEntity<?> submitOrder(@RequestBody String id) {
+		Integer user_id = Integer.valueOf(id);
+		System.out.println("Post "+id);
+
+		User user = userRepository.findByUId(user_id);
+		Set<Cart> cartItems = user.getCartItems();
+ 
+		Iterator<Cart> iter = cartItems.iterator();
+		while (iter.hasNext()) {
+			Cart cartItem = iter.next();
+			cartItem.order();
+			cartItem.setQuantity(0);
+			System.out.println(cartItem);
+		}
+
+		userRepository.save(user);
+		return new ResponseEntity<>(true, HttpStatus.OK);
+	}
+
+
 	//Get all items in cart which belong to user id
 	@GetMapping("/{id}")
 	public Set<Cart> getAll(@PathVariable Integer id) {

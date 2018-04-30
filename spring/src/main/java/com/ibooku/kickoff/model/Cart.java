@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 @Table(name = "Cart")
 public class Cart {
 
-	
+
 	@EmbeddedId
 	private CartId cartId;
 
@@ -29,22 +29,26 @@ public class Cart {
 	@MapsId("userId")
 	@JoinColumn(name = "user_id")
 	private User user;
-	
+
 	@ManyToOne
 	@MapsId("bookId")
 	@JoinColumn(name = "book_id")
 	private Book book;
-	
+
 	@Column
 	private int quantity;
-	
+
+	// Jeff
+	@Column
+	private int ordered;
+
 	public CartId getCartId() {
 		return cartId;
 	}
 	public void setCartId(CartId cid) {
 		cartId = cid;
 	}
-	
+
 	// JsonBackReference prevents infinite recursion when performing a join
 	// because User refers to Cart and Cart refers to User at the same time
 	// This tells Spring Boot to ignore when Cart refers to User
@@ -55,28 +59,33 @@ public class Cart {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
+
 	public Book getBook() {
 		return book;
 	}
 	public void setBook(Book book) {
 		this.book = book;
 	}
-	
+
 	public int getQuantity() {
 		return quantity;
 	}
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	
+
+	// Jeff -set ordered
+	public void order(){
+		this.ordered += 1;
+	}
+
 	@Override
 	public String toString() {
-		String result = "uid: " + user + "\nbid: " + book + "\nquantity:" + quantity;
+		String result = "uid: " + user + "\nbid: " + book + "\nquantity:" + quantity + "\nordered:" + ordered;
 		return result;
 	}
-	
-	
+
+
 //	@Override
 //	public String toString() {
 //		String result = "uid: " + userId + " bid: " + bookId;

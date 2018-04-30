@@ -16,7 +16,8 @@ export class CartComponent implements OnInit {
         items: new Array<Item>(),
         subtotal: 0
     };
-
+    ordered = false;
+  
     constructor(
         private cartService: CartService,
         private token: TokenStorage
@@ -41,7 +42,6 @@ export class CartComponent implements OnInit {
                     this.cart.subtotal += this.cart.items[i].total;
                 }
             });
-
     }
 
     updatePrice(index: number) {
@@ -53,10 +53,16 @@ export class CartComponent implements OnInit {
         this.cart.subtotal = temp;
     }
 
-    updateCart(): void{
-      let userId = this.token.getUserId();
+    // Jeff
+    submitOrder(): void{
+      let userId: string = this.token.getUserId();
 
-      this.cartService.updateCart(userId).subscribe();
+      this.cartService.submitOrder(userId).subscribe((success) => {
+        console.log("Success goes here")
+        this.cart.items = [];
+        this.cart.subtotal = 0;
+        this.ordered = true;
+      });
     }
 
 }

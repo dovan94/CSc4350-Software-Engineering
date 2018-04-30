@@ -1,4 +1,6 @@
 <div class="container">
+
+	<div *ngIf="ordered" class="success">Your books have been ordered!</div>
     <table class="table">
         <tr>
             <th>Product Name</th>
@@ -28,6 +30,6 @@
     <!-- Jeff - changed from
     <a routerLink="/checkout"><button>Proceed to checkout</button></a>
    -->
-    <a (click)="updateCart()"><button>Proceed to checkout</button></a>
+    <button (click)="submitOrder()">Checkout</button>
 
 </div>

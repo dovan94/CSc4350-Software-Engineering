@@ -30,4 +30,11 @@ export class CartService {
     getCartItems(userId: string): Observable<any> {
         return this.http.get(this.cartUrl + userId);
     }
+
+    // Jeff -update
+    submitOrder(userId: string): Observable<any> {
+      console.log("cart.service.updateCart() userId is ", userId)
+
+      return this.http.post(this.cartUrl + "submit-order", userId);
+    }
 }
