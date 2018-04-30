@@ -10,13 +10,16 @@ import { TokenStorage } from '../token.storage';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
+    isCollapse: boolean = true;
+    toggleIcon: string = "fas fa-plus";
     bookList: any[] = [];
 
     cart = {
         items: new Array<Item>(),
         subtotal: 0
     };
-
+    ordered = false;
+  
     constructor(
         private cartService: CartService,
         private token: TokenStorage
@@ -41,9 +44,17 @@ export class CartComponent implements OnInit {
                     this.cart.subtotal += this.cart.items[i].total;
                 }
             });
-
     }
 
+  toggle(): void {
+        this.isCollapse = !this.isCollapse;
+        if (this.isCollapse) {
+            this.toggleIcon = "fas fa-plus";
+        } else {
+            this.toggleIcon = "fas fa-minus";
+        }
+    }
+  
     updatePrice(index: number) {
         this.cart.items[index].total = this.cart.items[index].unitPrice * this.cart.items[index].quantity;
         let temp = 0;
@@ -51,6 +62,19 @@ export class CartComponent implements OnInit {
             temp += this.cart.items[i].total;
         }
         this.cart.subtotal = temp;
+    }
+
+    // Jeff
+    submitOrder(): void{
+      let userId: string = this.token.getUserId();
+
+      this.cartService.submitOrder(userId).subscribe((success) => {
+        console.log("Success goes here")
+        this.cart.items = [];
+        this.cart.subtotal = 0;
+        this.ordered = true;
+        this.isCollapse = true;
+      });
     }
 
 }

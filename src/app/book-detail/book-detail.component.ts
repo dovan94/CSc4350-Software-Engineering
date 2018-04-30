@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { BookService } from '../book.service';
+import { CartService } from '../cart.service';
+import { TokenStorage } from '../token.storage';
 import { Book } from '../book';
 
 @Component({
@@ -11,11 +13,14 @@ import { Book } from '../book';
 })
 export class BookDetailComponent implements OnInit {
     book: Book;
-
+    isAdded: boolean = false;
+    
     constructor (
         private route: ActivatedRoute,
         private location: Location,
-        private bookService: BookService
+        private bookService: BookService,
+        private cartService: CartService,
+        private token: TokenStorage
     ) { }
 
     ngOnInit() {
@@ -33,4 +38,11 @@ export class BookDetailComponent implements OnInit {
 
     }
 
+    addToCart(book_id: string) {
+        let user_id = this.token.getUserId();
+
+        this.cartService.addToCart(user_id, book_id.toString())
+            .subscribe(() => this.isAdded = true);
+
+    }
 }

@@ -14,3 +14,38 @@ img {
     margin: 0 auto;
     display: block;
 }
+button {
+    margin-top: 4%;
+    letter-spacing: 1px;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 12px;
+    border: 2px solid Gainsboro;
+    border-radius: 8px;
+    text-align: center;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    -webkit-transition: .3s;
+    transition: .3s;
+}
+button:after {
+    position: absolute;
+    -webkit-transition: .3s;
+    transition: .3s;
+    content: '';
+    width: 0;
+    left: 50%;
+    bottom: 0;
+    height: 3px;
+    background: MediumTurquoise;
+}
+button:hover {
+    cursor: pointer;
+}
+button:hover:after {
+    width: 100%;
+    left: 0;
+}

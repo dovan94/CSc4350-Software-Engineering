@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output} from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Subject }    from 'rxjs/Subject';
@@ -23,34 +23,29 @@ export class AdminSearchComponent implements OnInit {
 
     // private GoogleBookURL: string = "https://www.googleapis.com/books/v1/volumes?q=";
 
-    books: Book[] = [];
+    books: any[] = [];
     dropDown = false;
     searchWidth = true;
     searchTerm$ = new Subject<string>();
+    isClick = false;
+    // @Input() count: number;
+    count = 0;
+    isbn: string = "";
+    result: any;
+    book = new Book("", "", "", "", "");
+
+    @Output()
+    searchedBook: EventEmitter<any> = new EventEmitter<any>();
+    // reset: EventEmitter<any> = new EventEmitter<any>();
 
     constructor (
         private bookService: BookService
+        // private http: HttpClient
     ) {}
 
     ngOnInit() {
-        this.bookService.getBooks()
-            .subscribe(bookList => this.books = bookList);
-
 
     }
-
-
-
-    search(term: string) {
-        if (term.trim().length !== 0) {
-            this.searchTerm$.next(term.trim());
-            this.bookService.search(this.searchTerm$)
-                   .subscribe((results: any) => {
-                       this.books = results.items;
-                   });
-        }
-    }
-
 
     onfocus(){
         this.dropDown = !this.dropDown;
@@ -65,4 +60,31 @@ export class AdminSearchComponent implements OnInit {
         this.onfocus();
     }
 
+    onReset() {
+        this.isbn = "";
+    }
+
+    onSearch() {
+        if (this.isbn === "" || this.isbn.length != 13) {
+            alert("Please enter valid book's ISBN");
+        } else {
+            this.bookService.search(this.isbn).subscribe((bookInfo: any) => {
+                let items = bookInfo.items;
+                for (let item of items) {
+                    let volumeInfo = item.volumeInfo;
+                    for (let isbnInfo of volumeInfo.industryIdentifiers) {
+                        if (isbnInfo.type === "ISBN_13" && isbnInfo.identifier === this.isbn) {
+                            this.book.title = volumeInfo.title;
+                            this.book.author = volumeInfo.authors[0];
+                            this.book.isbn = this.isbn;
+                            this.book.genre = volumeInfo.categories[0];
+                            this.book.image = volumeInfo.imageLinks.thumbnail;
+                            this.book.description = volumeInfo.description;
+                            this.searchedBook.emit(this.book);
+                        }
+                    }
+                }
+            });
+        }
+    }
 }

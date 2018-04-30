@@ -19,7 +19,7 @@ export class CheckoutComponent implements OnInit {
         if (this.isCollapse) {
             this.toggleIcon = "fas fa-plus";
         } else {
-            this.toggleIcon = "fas fa-minus"
+            this.toggleIcon = "fas fa-minus";
         }
     }
 

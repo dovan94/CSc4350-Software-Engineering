@@ -11,11 +11,12 @@ import { Book } from './book';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class BookService {
     private GoogleBookURL: string = "https://www.googleapis.com/books/v1/volumes?q=";
-    private APIKey: string = "&key=AIzaSyBFoKzjV2wbdpI9Vqqmoz0_ZlAua5Nm5BY";
+    private APIKey: string = "&key=AIzaSyCUT1og8xtclUvsZrW29UzP77qtbnDD3F0";
 
     private bookUrl: string = "http://localhost:8080/api/books/";
 
@@ -50,18 +51,34 @@ export class BookService {
         return of(result);
     }
 
-
-    search(terms: Observable<string>) {
-        return terms.debounceTime(300)
-                    .distinctUntilChanged()
-                    .switchMap(term => this.searchEntries(term));
-    }
-    searchEntries(searchTerm: string) {
-        if (searchTerm.trim()) {
-            searchTerm = searchTerm.replace(/\s+/g, '+');
-            let URL = this.GoogleBookURL + searchTerm + this.APIKey;
+    search(inputISBN: string) {
+        if (inputISBN.trim()) {
+            inputISBN = inputISBN.replace(/\s+/g, '+');
+            inputISBN = "";
+            let isbnPath = "+isbn";
+            let URL = this.GoogleBookURL + inputISBN + isbnPath + this.APIKey;
             return this.http.get(URL);
+            // return this.http.get(URL).map(res => {
+            //     console.log(res);
+            //     return res;
+            // });
         }
     }
+
+    addBook(book: Book) {
+        return this.http.post(this.bookUrl, book, {responseType: 'text'});
+    }
+    // search(terms: Observable<string>) {
+    //     return terms.debounceTime(300)
+    //                 .distinctUntilChanged()
+    //                 .switchMap(term => this.searchEntries(term));
+    // }
+    // searchEntries(searchTerm: string) {
+    //     if (searchTerm.trim()) {
+    //         searchTerm = searchTerm.replace(/\s+/g, '+');
+    //         let URL = this.GoogleBookURL + searchTerm + this.APIKey;
+    //         return this.http.get(URL);
+    //     }
+    // }
 
 }

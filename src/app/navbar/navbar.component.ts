@@ -13,6 +13,9 @@ import { Location } from '@angular/common';
 })
 export class NavbarComponent implements OnInit {
     username: string;
+    status: string;
+    isLoggedin: boolean = false;
+    isAdmin: boolean = false;
 
     constructor(private token: TokenStorage,
                 private router: Router,
@@ -21,46 +24,23 @@ export class NavbarComponent implements OnInit {
     ngOnInit() {
         this.username = this.token.getUsername();
 
-        // navbar styling
-        // $(document).ready(function() {
-        //     if ($('.navbar>ul>li').hasClass('selected')){
-        //         $('.selected').addClass('active');
-        //         $('selected').removeClass('active');
-        //         var currentleft = $('.selected').position().left + "px";
-        //         var currentwidth = $('.selected').css('width');
-        //         $('.pointer').css({"left": currentleft,"width": currentwidth});
-        //     } else {
-        //         $('.navbar>ul>li').first().addClass('active');
-        //         var currentleft = $('.active').position().left + "px";
-        //         var currentwidth = $('.active').css('width');
-        //         $('.pointer').css({"left": currentleft,"width": currentwidth});
-        //     }
-        //     $('.navbar>ul>li').hover(function(){
-        //         $('.navbar ul li').removeClass('active');
-        //         $(this).addClass('active');
-        //         var currentleft = $('.active').position().left + "px";
-        //         var currentwidth = $('.active').css('width');
-        //         $('.pointer').css({"left": currentleft,"width": currentwidth});
-        //     },function(){
-        //         if ($('.navbar>ul>li').hasClass('selected')){
-        //             $('.selected').addClass('active');
-        //             var currentleft = $('.selected').position().left + "px";
-        //             var currentwidth = $('.selected').css('width');
-        //             $('.pointer').css({"left": currentleft,"width": currentwidth});
-        //         } else {
-        //             $('.navbar>ul>li').first().addClass('active');
-        //             var currentleft = $('.active').position().left + "px";
-        //             var currentwidth = $('.active').css('width');
-        //         }
-        //     });
-        // });
+        if (this.username == null) {
+            this.status = "Login";
+        } else {
+            this.status = "Hi, " + this.token.getUsername();
+            this.isLoggedin = true;
+            if (this.token.getRole() === "admin") {
+                this.isAdmin = true;
+            }
+        }
     }
 
 
 
     signOut(): void {
         this.token.signOut();
-        // this.router.navigate(['books']);
+        this.isLoggedin = false;
+        this.isAdmin = false;
         location.reload();
     }
 }

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Cute+Font');
+
 #menu1 .navbar-nav > li > a  {
     padding-top:5px !important;
     padding-bottom:0 !important;
@@ -6,6 +8,7 @@
 #menu1 .navbar-nav > li {
     float: none;
     display: inline-block;
+    letter-spacing: 1px;
 }
 #menu1 .navbar-nav {
     width: 100%;
@@ -19,202 +22,75 @@
 }
 
 #logo {
-    margin-top: 5%;
+    margin-top: 1%;
+    margin-bottom: -1%;
     text-align: center;
+    font-family: 'Cute Font', cursive;
+    font-size: 65pt;
+    height: 150px;
+}
+#logo a {
+    color: #494848;
 }
 #menu2 {
     border-top: none;
     background-color: white;
-    padding-top: 2%;
+}
+#menu2 .navbar-nav {
+    width: 100%;
 }
 #menu2 .navbar-nav li {
-    /* width: 20%; */
+    float: none;
+    display: inline-block;
+    text-transform: uppercase;
+}
+#menu2 .navbar-collapse {
+    text-align: center;
+    margin: 0 auto;
+}
+#menu2 .navbar-nav li a {
+    padding-bottom: 0;
 }
 ul {
     list-style: none;
+}
+div > a {
+    text-decoration: none;
 }
 a {
     text-decoration: none;
 }
 
-
-
-
-
-
-/* @import url("https://fonts.googleapis.com/css?family=Philosopher");
-@import url("//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
-
-#header {
-    width: 100%;
-}
-#bottom {
-    background-image: url("https://img0.etsystatic.com/193/1/6963715/il_340x270.1416680744_2ifj.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    -webkit-backdrop-filter: blur(3px);
-    -moz-filter: blur(3px);
-    -o-filter: blur(3px);
-    -ms-filter: blur(3px);
-    filter: blur(3px);
-    height: 150px;
-}
-#top {
-    position: absolute;
-    top: 3.5%;
-    left: auto;
-    width: 100%;
-}
-img {
-    display: block;
-    margin: auto;
-
-}
-.navbar {
-    background-color: Black;
-    height: 70px;
-    position: relative;
-    font-family: 'Philosopher', sans-sans-serif;
-}
-
-.navbar a {
-    text-decoration: none;
-}
-
-.navbar>ul {
-    position: relative;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.navbar>ul>li {
-    float: left;
-    position: relative;
-}
-
-.navbar>ul>li>a {
-    color: White;
-    padding: 0 20px;
-    display: block;
-    line-height: 70px !important;
-    text-transform: uppercase;
-    text-decoration: none;
-}
-
-.navbar>ul>li>ul {
-    position: absolute;
-    left: 0;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-
-.navbar>ul>li>ul a{
-    display:block;
-    color: #222;
-    width: 150px;
-    line-height: 50px !important;
-    background: #eee;
-    border-bottom: 1px solid #ddd;
+button {
+    letter-spacing: 5px;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 10px;
+    border: none;
     text-align: center;
-    padding: 0 5px;
-    height: 0;
+    text-transform: uppercase;
+    position: relative;
     overflow: hidden;
-    opacity: 0;
-    transition: all .3s linear .2s;
-    -o-transition: all .3s linear .2s;
-    -moz-transition: all .3s linear .2s;
-    -webkit-transition: all .3s linear .2s;
+    -webkit-transition: .3s;
+    transition: .3s;
 }
-
-.navbar>ul>li:hover>ul li a {
-    opacity: 1;
-    height: 50px;
-    transition:all .3s linear;
-    -o-transition:all .3s linear;
-    -moz-transition:all .3s linear;
-    -webkit-transition:all .3s linear;
-}
-
-.pointer span {
-    display: block;
-    height: 4px;
-    background-color: #EE6666;
-    position: relative;
-}
-
-.pointer span:after {
-    bottom: 100%;
-    left: 50%;
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
+button:after {
     position: absolute;
-    pointer-events: none;
-    border-color: rgba(238, 102, 102, 0);
-    border-bottom-color: #EE6666;
-    border-width: 4px;
-    margin-left: -4px;
+    -webkit-transition: .3s;
+    transition: .3s;
+    content: '';
+    width: 0;
+    left: 50%;
+    bottom: 0;
+    height: 3px;
+    background: MediumTurquoise;
 }
-
-.pointer {
-    position: absolute !important;
-    height: 4px;
-    top: 66px;
-    background: #333;
-    transition: all .3s linear;
-    -o-transition:all .3s linear;
-    -moz-transition:all .3s linear;
-    -webkit-transition:all .3s linear;
+button:hover {
+    cursor: pointer;
 }
-
-.selected.active>a, .active>a {
-    transition: all .3s linear;
-    -o-transition: all .3s linear;
-    -moz-transition: all .3s linear;
-    -webkit-transition: all .3s linear;
-    color: White;
+button:hover:after {
+    width: 100%;
+    left: 0;
 }
-
-
-#login{
-  float:right;
-}
-.wrapper {
-    position: relative;
-    display: block;
-    float: right;
-    padding-right: 2%;
-    width: 35%;
-
-}
-#search-box {
-    float: right;
-    width: 40%;
-    height: 36px;
-    margin: 14px 2%;
-    border-radius: 20px;
-    padding-left: 18px;
-    border-style: none;
-    font-size: 12pt;
-    font-family: 'FontAwesome';
-    -webkit-transition: all .5s ease;
-    -moz-transition: all .5s ease;
-    -o-transition: all .5s ease;
-    -ms-transition: all .5s ease;
-    transition: all .5s ease;
-
-}
-#search-box:focus, #search-box:hover{
-    outline: none;
-    color: grey;
-    width: 80%;
-}
-#username {
-    text-transform: none;
-}
-#cart {
-    float: right;
-} */

@@ -1,0 +1,33 @@
+.customBtn {
+	background-color: #84c5cc;
+	color: white;
+	width: 100%;
+}
+
+button:focus {
+	outline: 0 !important;
+}
+
+h2 {
+	border-bottom: 1px solid #84c5cc;
+	text-align: center;
+	margin: 0 auto;
+	margin-bottom: 5%;
+	color: #fb7f71;
+	padding-bottom: 2%;
+}
+
+.row {
+	height: 40%;
+}
+
+.container {
+	width: 40%;
+}
+
+.ng-form {
+	margin-top: 4%;
+	padding: 4% 4%;
+	border: 1px solid #84c5cc;
+	border-radius: 10px;
+}

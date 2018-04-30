@@ -1,3 +1,39 @@
-<p>
-    <app-admin-search></app-admin-search>
-</p>
+<div class="container">
+	<div>
+		<app-admin-search
+			(searchedBook)="searchForBook($event)"
+			#searchBar
+		>
+		</app-admin-search>
+	</div>
+
+	<div *ngIf="display">
+		<form class="ng-form" #f="ngForm" (ngSubmit)="onSubmit(f)">
+			<h2>Book Details</h2>
+			<div class="form-group">
+				<label>ISBN: </label>
+				<input class="form-control" placeholder="Book's ISBN" name="isbn" [ngModel]="book.isbn" disabled>
+			</div>
+			<div class="form-group">
+				<label>Title: </label>
+				<input class="form-control" placeholder="Book's Title" name="title" [ngModel]="book.title" disabled>
+			</div>
+			<div class="form-group">
+				<label>Genres: </label>
+				<input class="form-control" placeholder="Book's Category" name="categories" [(ngModel)]="book.genre">
+			</div>
+			<div class="form-group">
+				<label>Price: </label>
+				<input class="form-control" placeholder="Enter book's price" name="price" [(ngModel)]="book.price">
+			</div>
+			<div class="row">
+				<div class="col-md-6 text-center">
+					<button type="submit" class="btn btn-sm customBtn" type="submit">Add</button>
+				</div>
+				<div class="col-md-6 text-center">
+					<button class="btn btn-sm customBtn" (click)="onCancel(f)">Cancel</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

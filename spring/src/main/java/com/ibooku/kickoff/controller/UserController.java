@@ -27,19 +27,20 @@ import com.ibooku.kickoff.service.BookRepository;
 import com.ibooku.kickoff.service.UserRepository;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://127.0.0.1:4200")
 @RequestMapping(path="/api/users")
 public class UserController {
-	
+
 	@Autowired
 	private UserRepository userRepository;
-	
+
+
 	@Autowired
 	private BookRepository bookRepository;
 	
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
-			
+
 	
 	// Create new user
 	@PostMapping("/signup")
@@ -48,13 +49,14 @@ public class UserController {
 		User u = userRepository.save(newUser);
 		return (u != null) ? "Saved" : "Error";
 	}
-	
+
 	// Get user by username
 	@GetMapping("username/{username}")
 	public User getByUsername(@PathVariable String username) {
 		User u = userRepository.findByUsername(username);
 		return u;
 	}
+
 	
 	// Get user by id
 	@GetMapping("/{id}")
@@ -63,12 +65,13 @@ public class UserController {
 		return u;
 	}
 	
+
 	// Check if username is exists
 	@GetMapping("/isExist/{username}")
 	public boolean isExist (@PathVariable String username) {
 		return userRepository.findByUsername(username) != null;
 	}
-	
+
 	// Get all users
 	@GetMapping
 	public Iterable<User> getAll () {

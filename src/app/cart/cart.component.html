@@ -9,7 +9,7 @@
         <tr *ngFor="let item of cart.items; let i = index">
             <td>
                 <img src="{{ item.image }}"/>
-                <div>
+                <div class="detail">
                     <h5>{{ item.title }}</h5>
                     <i>by {{ item.author }}</i>
                 </div>
@@ -21,9 +21,29 @@
             <td>${{item.total}}</td>
         </tr>
         <tr>
-            <td colspan="2">Subtotal:</td>
-            <td>${{ cart.subtotal }}</td>
+            <td></td>
+            <td></td>
+            <td class="subtotal">Subtotal:</td>
+            <td class="subtotal">${{ cart.subtotal }}</td>
         </tr>
     </table>
+
+    <div>
+        <button type="button"
+                class="btn"
+                [attr.aria-expanded]="!isCollapse"
+                aria-controls="cart"
+                (click)="toggle()">
+            <span><i class="{{ toggleIcon }}"></i></span> Payment Method
+        </button>
+
+        <div id="cart" [ngbCollapse]="isCollapse">
+            <app-payment></app-payment>
+        </div>
+    </div>
+    <!-- Jeff - changed from
     <a routerLink="/checkout"><button>Proceed to checkout</button></a>
+   -->
+    <button class="btn" (click)="submitOrder()">Checkout</button>
+    <div *ngIf="ordered" class="success">Your books have been ordered!</div>
 </div>

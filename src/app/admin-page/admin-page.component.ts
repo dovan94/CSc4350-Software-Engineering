@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Book } from '../book';
+import { BookService } from '../book.service';
 
 @Component({
   selector: 'app-admin-page',
@@ -7,9 +9,47 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminPageComponent implements OnInit {
 
-  constructor() { }
+  display = false;
+  book = new Book("", "", "", "", "");
+
+  @ViewChild('searchBar') searchComponent;
+
+  constructor(
+  	private bookService: BookService
+  	) { }
 
   ngOnInit() {
   }
 
+  sayHello(event) {
+  	console.log(event);
+  }
+
+  searchForBook(book) {
+  	if (book.isbn != "") {
+  		this.display = true;
+  		this.book.isbn = book.isbn;
+  		this.book.title = book.title;
+  		this.book.genre = book.genre;
+  	}
+  }
+
+  onCancel(f) {
+  	f.resetForm();
+  	this.display = false;
+  	this.searchComponent.onReset();
+  }
+
+  onSubmit(f) {
+  	this.bookService.addBook(this.book)
+  		.subscribe(res => {
+  			if (res === "Saved") {
+  				f.resetForm();
+  				console.log("success");
+  				this.display = false;
+  			} else {
+  				console.log(res);
+  			}
+  		});
+  }
 }

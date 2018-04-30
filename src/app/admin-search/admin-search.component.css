@@ -1,0 +1,16 @@
+#search-box {
+	width: 75%;
+	border-radius: 4px;
+	/*border-width: 1px;*/
+}
+
+input:focus {
+	outline: 0 !important;
+}
+
+#searchBtn {
+	width: 24%;
+	float: right;
+	background-color: #84c5cc;
+	color: white;
+}
