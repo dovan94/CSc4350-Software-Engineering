@@ -17,11 +17,11 @@ const routes: Routes = [
     { path: '', redirectTo: '/books', pathMatch: 'full' },
     { path: 'books', component: BooksComponent },
     { path: 'book/:id', component: BookDetailComponent },
-    { path: 'help/contact', component: ContactComponent },
+    { path: 'contact', component: ContactComponent },
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignUpComponent },
     { path: 'payment', component: PaymentComponent },
-    { path: 'help/faq', component: FaqComponent },
+    { path: 'faq', component: FaqComponent },
     { path: 'cart', component: CartComponent },
     { path: 'checkout', component: CheckoutComponent },
     { path: 'admin', component: AdminPageComponent }

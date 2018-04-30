@@ -1,4 +1,64 @@
-<div id="header">
+<nav id="menu1" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse js-navbar-collapse">
+            <ul class="nav navbar-nav">
+                <!-- Home -->
+                <li class="nav-item">
+                    <a routerLink="/books">Products</a>
+                </li>
+                <!-- Contact -->
+                <li class="nav-item">
+                    <a routerLink="/contact">Contact Us</a>
+                </li>
+                <!-- FAQs -->
+                <li class="nav-item">
+                    <a routerLink="/faq">FAQs</a>
+                </li>
+                <!-- Cart -->
+                <li class="nav-item" id="cart">
+                  <a routerLink="/cart"><i class="fas fa-shopping-bag"></i></a>
+                </li>
+                <!-- Login -->
+                <!-- <li id="login">
+                    <a *ngIf="username == null" routerLink="/login">Login</a>
+
+                    <a *ngIf="username" routerLink="/help/contact" id="username">Hi, {{ username }}</a>
+                    <ul *ngIf="username">
+                        <li>
+                            <a routerLink="" (click)="signOut()" style="width:100px;">Logout</a>
+                        </li>
+                        <li>
+                            <a routerLink="/admin" style="width:100px;">Admin</a>
+                        </li>
+                    </ul>
+                </li> -->
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Logo -->
+<div id="logo">
+    <h1>I Book U</h1>
+</div>
+
+<nav id="menu2" class="navbar navbar-expand-lg navbar-default">
+    <div class="collapse navbar-collapse justify-content-md-center" id="menu">
+        <ul class="nav navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="">Products</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="">Sign Up</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="">Login</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!-- <div id="header">
     <div id="bottom"></div>
     <div id="top">
         <img src="../assets/logo.png" width="150" height="120"/>
@@ -42,9 +102,9 @@
         </ul>
 
         <div class="wrapper">
-            <!-- inject search box -->
+
             <app-book-search></app-book-search>
         </div>
 
     </div>
-</nav>
+</nav> -->

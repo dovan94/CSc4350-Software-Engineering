@@ -1,4 +1,48 @@
-@import url("https://fonts.googleapis.com/css?family=Philosopher");
+#menu1 .navbar-nav > li > a  {
+    padding-top:5px !important;
+    padding-bottom:0 !important;
+    height: 30px;
+}
+#menu1 .navbar-nav > li {
+    float: none;
+    display: inline-block;
+}
+#menu1 .navbar-nav {
+    width: 100%;
+}
+#menu1 {
+    min-height: 10px !important;
+}
+#menu1 .navbar-collapse {
+    text-align: center;
+    margin: 0 auto;
+}
+
+#logo {
+    margin-top: 5%;
+    text-align: center;
+}
+#menu2 {
+    border-top: none;
+    background-color: white;
+    padding-top: 2%;
+}
+#menu2 .navbar-nav li {
+    /* width: 20%; */
+}
+ul {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+
+
+
+
+
+
+/* @import url("https://fonts.googleapis.com/css?family=Philosopher");
 @import url("//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
 
 #header {
@@ -110,7 +154,7 @@ img {
     position: absolute;
     pointer-events: none;
     border-color: rgba(238, 102, 102, 0);
-    border-bottom-color: #EE6666; /* color of triangle*/
+    border-bottom-color: #EE6666;
     border-width: 4px;
     margin-left: -4px;
 }
@@ -173,4 +217,4 @@ img {
 }
 #cart {
     float: right;
-}
+} */
