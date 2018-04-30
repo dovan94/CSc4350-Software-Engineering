@@ -1,11 +1,13 @@
-h1
-{
+h1 {
     text-align: center;
     font-family: 'Times New Roman';
 }
-p
-{
+p {
     text-align: left;
     font-family: 'Times New Roman';
     font-size: 125%;
+}
+.container {
+    margin-top: 5%;
+    width: 90%;
 }
