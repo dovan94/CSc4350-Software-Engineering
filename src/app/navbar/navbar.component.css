@@ -94,3 +94,6 @@ button:hover:after {
     width: 100%;
     left: 0;
 }
+.container {
+    width: 50%;
+}
