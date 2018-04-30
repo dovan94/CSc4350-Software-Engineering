@@ -1,4 +1,17 @@
 <div class="container">
+<div>
+        <button type="button"
+                class="btn btn-info"
+                [attr.aria-expanded]="!isCollapse"
+                aria-controls="cart"
+                (click)="toggle()">
+            <span><i class="{{ toggleIcon }}"></i></span> Payment Method
+        </button>
+        
+        <div id="cart" [ngbCollapse]="isCollapse">
+            <app-payment></app-payment>
+        </div>
+    </div>
 
 	<div *ngIf="ordered" class="success">Your books have been ordered!</div>
     <table class="table">
@@ -31,5 +44,5 @@
     <a routerLink="/checkout"><button>Proceed to checkout</button></a>
    -->
     <button (click)="submitOrder()">Checkout</button>
-
+<div *ngIf="ordered" class="success">Your books have been ordered!</div>
 </div>

@@ -10,6 +10,8 @@ import { TokenStorage } from '../token.storage';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
+    isCollapse: boolean = true;
+    toggleIcon: string = "fas fa-plus";
     bookList: any[] = [];
 
     cart = {
@@ -44,6 +46,15 @@ export class CartComponent implements OnInit {
             });
     }
 
+  toggle(): void {
+        this.isCollapse = !this.isCollapse;
+        if (this.isCollapse) {
+            this.toggleIcon = "fas fa-plus";
+        } else {
+            this.toggleIcon = "fas fa-minus";
+        }
+    }
+  
     updatePrice(index: number) {
         this.cart.items[index].total = this.cart.items[index].unitPrice * this.cart.items[index].quantity;
         let temp = 0;
@@ -62,6 +73,7 @@ export class CartComponent implements OnInit {
         this.cart.items = [];
         this.cart.subtotal = 0;
         this.ordered = true;
+        this.isCollapse = true;
       });
     }
 
