@@ -11,6 +11,7 @@ import 'rxjs/add/observable/throw';
 
 
 const TOKEN_HEADER_KEY = 'Authorization';
+const CONTENT_TYPE = 'Content-Type';
 
 @Injectable()
 export class Interceptor implements HttpInterceptor {
@@ -22,10 +23,20 @@ export class Interceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         let authReq = req;
+        let url = req.url;
+        var reg = "googleapis";
+
+        console.log(req.url);
+
+
         if (this.token.getToken() != null) {
-            //clone the request to add the new header
-            authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + this.token.getToken()) });
+            if (!url.includes(reg)) {
+
+                //clone the request to add the new header
+                authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + this.token.getToken()) });
+            }
         }
+
 
         // send the newly created request
         return next.handle(authReq).do((err: any) => {

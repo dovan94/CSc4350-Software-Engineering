@@ -31,6 +31,11 @@ export class AdminPageComponent implements OnInit {
   		this.book.isbn = book.isbn;
   		this.book.title = book.title;
   		this.book.genre = book.genre;
+        this.book.author = book.author;
+        this.book.price = book.price;
+        this.book.description = book.description;
+        this.book.image = book.image;
+        this.book.stock = 10;
   	}
   }
 

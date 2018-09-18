@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpBackend } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { Book } from './book';
@@ -13,8 +13,17 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
 
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
+
 @Injectable()
 export class BookService {
+
+    private httpClient: HttpClient;
+
     private GoogleBookURL: string = "https://www.googleapis.com/books/v1/volumes?q=";
     private APIKey: string = "&key=AIzaSyCUT1og8xtclUvsZrW29UzP77qtbnDD3F0";
 
@@ -54,18 +63,20 @@ export class BookService {
     search(inputISBN: string) {
         if (inputISBN.trim()) {
             inputISBN = inputISBN.replace(/\s+/g, '+');
-            inputISBN = "";
+
             let isbnPath = "+isbn";
+
             let URL = this.GoogleBookURL + inputISBN + isbnPath + this.APIKey;
-            return this.http.get(URL);
-            // return this.http.get(URL).map(res => {
-            //     console.log(res);
-            //     return res;
-            // });
+
+            // return this.http.get(URL);
+            return this.http.get(URL).map(res => {
+                return res;
+            });
         }
     }
 
     addBook(book: Book) {
+        console.log(book);
         return this.http.post(this.bookUrl, book, {responseType: 'text'});
     }
     // search(terms: Observable<string>) {

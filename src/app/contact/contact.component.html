@@ -6,13 +6,17 @@
   enctype="multipart/form-data"
   name="EmailTestForm">
     <h1>Send us your questions or comments</h1>
-    <label for="fname">Your Name</label><br>
-    <input type="text" id="yname" name="name" placeholder="Your name.."><br>
-	  <label for="fname">Your Email</label><br>
-    <input type="text" id="yemail" name="email" placeholder="Your email.."><br>
-    <label for="subject">Subject</label><br>
-    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-    <br><input type="submit" value="Submit">
+    <div *ngIf="!submitted">
+        <label for="fname">Your Name</label><br>
+        <input type="text" id="yname" name="name" placeholder="Your name.."><br>
+    	<label for="fname">Your Email</label><br>
+        <input type="text" id="yemail" name="email" placeholder="Your email.."><br>
+        <label for="subject">Subject</label><br>
+        <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
 
+        <button class="btn" (click)="submitMessage()">Submit</button>
+    </div>
+
+    <div *ngIf="submitted" class="success">Thank you for your feedback! We will get back to you as soon as possible!</div>
   </form>
 </div>
